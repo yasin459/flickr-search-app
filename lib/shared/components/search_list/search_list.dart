@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_fine/core/response_model.dart';
+import 'package:flutter_application_fine/shared/components/empty_widget/empty_widget.dart';
+import 'package:flutter_application_fine/shared/components/loading_widget/loading_widget.dart';
+import 'package:flutter_application_fine/shared/components/search_list/list_item.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 class SearchList extends HookWidget {
@@ -12,27 +15,15 @@ class SearchList extends HookWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: isLoading
-          ? const Text('loading...')
+          ? const LoadingWidget()
           : items.isEmpty
-              ? const Text('no data')
+              ? const EmptyWidget()
               : ListView.builder(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(16),
                   itemCount: items.length,
-                  itemBuilder: (context, index) {
-                    Photo item = items[index];
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: ListTile(
-                        tileColor: Colors.amber,
-                        title: Text(items[index].title.toString(),
-                            style: const TextStyle(fontFamily: 'IndieFlower')),
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              'https://farm${item.farm}.staticflickr.com/${item.server}/${item.id}_${item.secret}_s.jpg'),
-                        ),
-                      ),
-                    );
-                  },
+                  itemExtent: 100.0,
+                  itemBuilder: (context, index) =>
+                      ListItem(photo: items[index]),
                 ),
     );
   }

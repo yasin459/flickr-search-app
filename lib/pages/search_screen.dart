@@ -32,7 +32,12 @@ class SearchScreen extends HookWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Flutter Search Bar Tutorial'),
+        backgroundColor: Colors.black26,
+        title: const Text(
+          'Communere Search App',
+          textAlign: TextAlign.center,
+        ),
+        centerTitle: true,
       ),
       body: Column(
         children: [

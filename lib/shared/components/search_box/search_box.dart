@@ -21,12 +21,34 @@ class SearchBox extends HookWidget {
 
     return Container(
       padding: const EdgeInsets.all(16),
-      child: TextField(
-        controller: controller,
-        decoration: const InputDecoration(
-          labelText: 'Search',
-          border: OutlineInputBorder(),
-          prefixIcon: Icon(Icons.search),
+      child: Material(
+        elevation: 2,
+        shadowColor: Colors.black,
+        borderRadius: BorderRadius.circular(100),
+        child: TextField(
+          style: const TextStyle(
+              color: Colors.black,
+              height: 2,
+              fontFamily: 'IndieFlower',
+              fontWeight: FontWeight.bold),
+          controller: controller,
+          decoration: InputDecoration(
+            hintText: 'Enter your query',
+            filled: true,
+            fillColor: Colors.blueGrey.shade50,
+            border: OutlineInputBorder(
+                borderSide: BorderSide.none,
+                borderRadius: BorderRadius.circular(100)),
+            prefixIcon: Container(
+                margin: const EdgeInsets.symmetric(horizontal: 25),
+                child: Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                    ),
+                    // color: Colors.grey.shade400),
+                    child: const Icon(Icons.search, color: Colors.black))),
+          ),
         ),
       ),
     );
