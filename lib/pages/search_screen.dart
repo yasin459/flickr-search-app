@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_fine/core/apis.dart';
+import 'package:flutter_application_fine/core/response_model.dart';
 import 'package:flutter_application_fine/shared/components/search_list/search_list.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
@@ -10,7 +11,7 @@ class SearchScreen extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final items = useState([]);
+    final items = useState<List<Photo>>([]);
     final searchField = useState('');
     final isLoading = useState(false);
 
@@ -18,7 +19,7 @@ class SearchScreen extends HookWidget {
       isLoading.value = true;
       try {
         getItems(searchField.value).then((value) {
-          items.value = value;
+          items.value = value.photos?.photo ?? [];
           isLoading.value = false;
         });
       } catch (e) {
