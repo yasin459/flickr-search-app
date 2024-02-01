@@ -30,24 +30,34 @@ class SearchScreen extends HookWidget {
       return null;
     }, [searchField.value]);
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black26,
-        title: const Text(
-          'Communere Search App',
-          textAlign: TextAlign.center,
-        ),
-        centerTitle: true,
-      ),
-      body: Column(
-        children: [
-          SearchBox(searchField: searchField),
-          Expanded(
-            child: Center(
-              child: SearchList(items: items.value, isLoading: isLoading.value),
-            ),
+    EdgeInsetsGeometry padding = MediaQuery.of(context).size.width > 500
+        ? EdgeInsets.symmetric(
+            vertical: MediaQuery.of(context).size.width * 0.1,
+            horizontal: MediaQuery.of(context).size.width * 0.3)
+        : const EdgeInsets.all(0);
+
+    return Padding(
+      padding: padding,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.black26,
+          title: const Text(
+            'Communere Search App',
+            textAlign: TextAlign.center,
           ),
-        ],
+          centerTitle: true,
+        ),
+        body: Column(
+          children: [
+            SearchBox(searchField: searchField),
+            Expanded(
+              child: Center(
+                child:
+                    SearchList(items: items.value, isLoading: isLoading.value),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
