@@ -19,11 +19,12 @@ class SearchList extends HookWidget {
           : items.isEmpty
               ? const EmptyWidget()
               : ListView.builder(
+                  key: const Key('my_list'),
                   padding: const EdgeInsets.all(16),
                   itemCount: items.length,
                   itemExtent: 100.0,
                   itemBuilder: (context, index) =>
-                      ListItem(photo: items[index]),
+                      ListItem(photo: items[index], index: index),
                 ),
     );
   }

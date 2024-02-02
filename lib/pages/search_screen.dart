@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_fine/core/apis.dart';
 import 'package:flutter_application_fine/core/response_model.dart';
@@ -7,7 +8,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import '../shared/components/search_box/search_box.dart';
 
 class SearchScreen extends HookWidget {
-  const SearchScreen({super.key});
+  final Dio dio;
+
+  const SearchScreen({super.key, required this.dio});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,7 @@ class SearchScreen extends HookWidget {
     useEffect(() {
       isLoading.value = true;
       try {
-        getItems(searchField.value).then((value) {
+        getItems(searchField.value, dio).then((value) {
           items.value = value.photos?.photo ?? [];
           isLoading.value = false;
         });

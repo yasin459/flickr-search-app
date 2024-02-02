@@ -5,13 +5,16 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 
 class ListItem extends HookWidget {
   final Photo photo;
+  final int index;
 
-  const ListItem({super.key, required this.photo});
+  const ListItem({super.key, required this.photo, required this.index});
 
   @override
   Widget build(BuildContext context) {
+    print('item_${index}_text');
     final borderRadius = BorderRadius.circular(20); // Image border
     return Padding(
+      key: Key('item_${index}_text'),
       padding: const EdgeInsets.fromLTRB(8.0, 0, 8.0, 8.0),
       child: Material(
         color: Colors.grey.shade100,

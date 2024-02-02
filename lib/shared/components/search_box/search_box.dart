@@ -16,7 +16,9 @@ class SearchBox extends HookWidget {
       controller.addListener(() => _debouncer.run(() {
             searchField.value = controller.text;
           }));
-      return null;
+      return () {
+        _debouncer.dispose();
+      };
     }, [controller]);
 
     return Container(
