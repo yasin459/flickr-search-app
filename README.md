@@ -1,7 +1,29 @@
 # flutter_application_fine
+## Caution: you have to add your FLICKR API_KEY to .env file or otherwise it won't work
 
-A new Flutter project.
+A search flutter app by using flickr search api.
 
+![image](https://github.com/yasin459/flickr-search-app/assets/60640286/c3167374-a6ca-4268-8e4f-5c9e5d935715)
+![image](https://github.com/yasin459/flickr-search-app/assets/60640286/0174f1cb-1d3d-4710-ba92-da55ba8c0d65)
+
+## main features
+- fast and performant design
+- using Dio for making rest api's
+- using debounced search when entering queries
+- reading api_key from .env file using dotenv package
+- integration tests with coverage of 98.2%
+- mocked Dio, NetworkImage, Dotenv.
+- no lint error
+- custom fonts, loading widget with gifs and animations
+- used best practices for folder structure
+## test coverage
+steps to make coverage report
+- flutter test --coverage
+- genhtml coverage/lcov.info -o coverage/html
+- open coverage/html/index.html
+  
+test coverage result using lcov 
+![image](https://github.com/yasin459/flickr-search-app/assets/60640286/8a3aed00-74b5-45e5-8d59-6eaff5021656)
 ## Getting Started
 
 This project is a starting point for a Flutter application.
