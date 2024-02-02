@@ -11,7 +11,6 @@ class ListItem extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('item_${index}_text');
     final borderRadius = BorderRadius.circular(20); // Image border
     return Padding(
       key: Key('item_${index}_text'),

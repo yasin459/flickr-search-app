@@ -7,12 +7,15 @@ import 'package:flutter_application_fine/pages/search_screen.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http_mock_adapter/http_mock_adapter.dart';
 import 'package:network_image_mock/network_image_mock.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'mocks.dart';
 
 void main() async {
   late Dio dio;
   late DioAdapter dioAdapter;
+  TestWidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env");
 
   Response<dynamic> response;
   group('Testing entire app', () {

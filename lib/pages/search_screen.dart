@@ -26,7 +26,6 @@ class SearchScreen extends HookWidget {
           isLoading.value = false;
         });
       } catch (e) {
-        print('error is catched $e');
         isLoading.value = false;
         items.value = [];
       }
